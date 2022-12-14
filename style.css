@@ -1,0 +1,23 @@
+.title {
+    text-align: center;
+    margin-top: 12rem;
+    font-size: 25px;
+}
+
+.start-menu {
+    height: 100vh;
+    background: rgb(66,153,41);
+    background: linear-gradient(30deg, rgba(66,153,41,1) 23%, rgba(205,194,34,1) 50%, rgba(45,105,241,1) 89%);
+}
+
+
+.sub-title {
+    font-size: 20px;
+}
+
+body {
+    height: 100vh;
+    background-color: rgb(40, 40, 40);
+    padding: 0;
+    margin: 0;
+}
