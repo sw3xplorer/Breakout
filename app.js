@@ -3,6 +3,14 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 canvas.width = document.body.clientWidth;
 canvas.height = document.body.clientHeight;
+let dir = 0;
+
+var button = document.getElementById("show-button"); 
+button.addEventListener("click", () => {
+    button.style.display = "none";
+})
+
+
 
 
 // skapa paddeln
@@ -11,14 +19,6 @@ const paddleHeight = 15;
 const paddleWidht = 80;
 let paddleX = (canvas.width - paddleWidht) /2;
 let paddleY = canvas.height*0.9;
-
-// paddel logik
-
-let keyDownCheck;
-let keyUpCheck;
-
-let isRightPressed = false;
-let isLeftPressed = false;
 
 
 // skapa bollen
@@ -30,7 +30,7 @@ let ballY = paddleY - 50;
 // boll saker
 
 const radius = 10;
-let velocityX = 0;
+let velocityX = 2;
 let velocityY = -7;
 
 
@@ -73,4 +73,28 @@ function update()
 {
     ballX += velocityX;
     ballY += velocityY;
+    paddleX += dir;
+    if (ballY < 0 || ballY > canvas.height)
+    {
+        velocityY = -velocityY;
+    }
+    if (ballX < 0 || ballX > canvas.width)
+    {
+        velocityX = -velocityX;
+    }
+
+    if (ballY == paddleY && )
 }
+document.addEventListener('keydown', function (e) {
+    if (e.key == "d" || e.key == "ArrowRight")
+    {
+        dir = 7;
+    }
+    if (e.key == "a" || e.key == "ArrowLeft")
+    {
+        dir = -7
+    }
+    });
+document.addEventListener("keyup", function (e){
+    dir = 0;
+});

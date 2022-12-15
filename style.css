@@ -10,6 +10,11 @@
     background: linear-gradient(30deg, rgba(66,153,41,1) 23%, rgba(205,194,34,1) 50%, rgba(45,105,241,1) 89%);
 }
 
+.start-button {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
 
 .sub-title {
     font-size: 20px;
@@ -20,4 +25,9 @@ body {
     background-color: rgb(40, 40, 40);
     padding: 0;
     margin: 0;
+    overflow: hidden;
+}
+
+canvas {
+    position: absolute;
 }
