@@ -15,7 +15,7 @@ canvas.height = document.body.clientHeight;
 
 // poäng och liv
 
-let score = 100;
+let score = 115;
 let lives = 3;
 
 // bricks
@@ -51,14 +51,14 @@ let velocityY = -3;
 
 let playing = true;
 function play() {
-    if (playing && lives && score != (brickColumns*brickRows)) {
+    if (playing && lives && score <= (brickColumns * brickRows)) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        scoreAndLives();
-        drawPaddle();
-        drawBricks();
-        drawBall();
         brickCollision();
+        drawBricks();
+        drawPaddle();
+        drawBall();
         miss();
+        scoreAndLives();
         update();
         setTimeout(play, 1000 / framerate);
     }
@@ -74,8 +74,7 @@ function scoreAndLives() {
 }
 
 function miss() {
-    if (ballY > canvas.height) 
-    {
+    if (ballY > canvas.height) {
         lives -= 1;
         paddleX = (canvas.width - paddleWidht) / 2;
         ballX = paddleX + (paddleWidht / 2);
@@ -83,7 +82,7 @@ function miss() {
         velocityX = Math.random() > 0.5 ? 2 : -2;
         velocityY = -3;
     }
-    
+
 }
 
 function winLose() {
@@ -92,10 +91,11 @@ function winLose() {
         ctx.fillStyle = "#ffffff"
         ctx.fillText("Game over", canvas.width * 0.45, canvas.height / 2);
     }
-    else if (score == brickColumns*brickRows) {
+    else if (score >= brickColumns * brickRows) {
         ctx.font = "24px Arial"
         ctx.fillStyle = "#ffffff"
         ctx.fillText("You win!!!", canvas.width * 0.45, canvas.height / 2);
+        playing = false;
     }
 }
 
